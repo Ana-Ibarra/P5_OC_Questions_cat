@@ -34,7 +34,7 @@ app.layout = html.Div(children=[
 #         style={'width': '100%', 'height': 50}),
     
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
-    html.Div(id='output-state')
+    html.Div(id='textarea-example-output', style={'whiteSpace': 'pre-line'})
 ])
 
 # @app.callback(Output('output-state', 'children'),
