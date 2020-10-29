@@ -13,8 +13,17 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 
-app.layout = html.Div([
-    dcc.Input(id='input-1-state', type='text', value='Montréal'),
+app.layout = html.Div(children=[
+    html.H1(children='Questions Classification'),
+
+    html.Div(children='''
+        P5: A web application framework, Open Classrrom .
+    '''),
+
+    dcc.Textarea(
+        id='input-1-state', 
+        value='Titre',
+        style={'width': '100%', 'height': 300}),
     dcc.Input(id='input-2-state', type='text', value='Canada'),
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='output-state')
