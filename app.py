@@ -20,11 +20,19 @@ app.layout = html.Div(children=[
         P5: A web application framework, Open Classrrom .
     '''),
 
+    dcc.Input(id='input-1-state',
+              type='text', 
+              value='Titre', 
+              style={'width': '80%'}),
     dcc.Textarea(
-        id='input-1-state', 
-        value='Titre',
+        id='input-2-state', 
+        value='Text',
         style={'width': '100%', 'height': 300}),
-    dcc.Input(id='input-2-state', type='text', value='Canada'),
+#     dcc.Textarea(
+#         id='input-1-state', 
+#         value='Titre',
+#         style={'width': '100%', 'height': 50}),
+    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='output-state')
 ])
