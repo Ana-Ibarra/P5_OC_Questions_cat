@@ -23,7 +23,8 @@ app.layout = html.Div(children=[
     dcc.Input(id='input-1-state',
               type='text', 
               value='Titre', 
-              style={'width': '80%'}),
+              style={'width': '80%', margin:5}),
+    
     dcc.Textarea(
         id='input-2-state', 
         value='Text',
