@@ -4,7 +4,8 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-
+from functions2 import body_clean
+from functions2 import tags_prediction
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -30,9 +31,8 @@ app.layout = html.Div(children=[
 
 
 def get_tags(value1,value2)
-    from functions2 import body_clean
-    from functions2 import tags_prediction
-    body = body_clean('input-1-state', 'input-2-state')
+
+    body = body_clean(value1, value2)
     output = tags_prediction(body)
     return output  
 
