@@ -29,31 +29,12 @@ app.layout = html.Div(children=[
     ])
 
 
-# # def get_tags(value1,value2)
-# #     from functions2 import body_clean
-# #     from functions2 import tags_prediction
-# #     body = body_clean('input-1-state', 'input-2-state')
-# #     output = tags_prediction(body)
-# #     return "{}".format(output)    
-
-# @app.callback(
-#     Output('update_state', 'children'),
-#     [Input('submit-button-state', 'n_clicks')],
-#     [State('input-2-state', 'value'),
-#     State('input-1-state', 'value')])
-# def update_output(n_clicks, input1, input2):
-#     return u'''
-#         The Button has been pressed {} times,
-#         Input 1 is "{}",
-#         and Input 2 is "{}"
-#     '''.format(n_clicks, input1, input2)
-
-
-
-# if __name__ == '__main__':
-#     app.run_server(debug=True)
-    
-    
+def get_tags(value1,value2)
+    from functions2 import body_clean
+    from functions2 import tags_prediction
+    body = body_clean('input-1-state', 'input-2-state')
+    output = tags_prediction(body)
+    return output  
 
 
 @app.callback(Output('Tags_output', 'children'),
@@ -62,7 +43,8 @@ app.layout = html.Div(children=[
                State('input-2-state', 'value')])
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
-        return 'You have entered: \n{}'.format(input1,input2)
+        ouput=get_tags(input1,input2)
+        return 'Your tags are : \n{}'.format(output)
 
 
 if __name__ == '__main__':
