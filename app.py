@@ -18,10 +18,10 @@ app.layout = html.Div(children=[
         P5: A web application framework, from Openclassroom .
     '''),
     dcc.Input(
-        id='input-1-state', type='text', value='Title', 
+        id='input-1-state', type='text', value='Hi my name is Juan!', 
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
    dcc.Textarea(
-        id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
+        id='input-2-state', value='I want to know if my mom loves me or not but I use python and C++ to ask my java question', style={'width': '100%', 'height': 300}),
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='Tags_output', style={'whiteSpace': 'pre-line'})
@@ -36,7 +36,7 @@ def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
         from functions2 import body_clean
         from functions2 import tags_prediction
-        body = body_clean(value1, value2)
+        body = body_clean(input1, input2)
         output = tags_prediction(body)
         return 'Your tags are : \n{}'.format(output)
 
