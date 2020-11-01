@@ -38,7 +38,7 @@ def update_output(n_clicks, input1, input2):
         from functions2 import tags_prediction
         body = body_clean(input1, input2)
         output = tags_prediction(body)
-        return 'Your tags are : \n{}'.format(input1)
+    return 'Your tags are : \n{}'.format(input1)
 
 
 if __name__ == '__main__':
