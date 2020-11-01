@@ -23,7 +23,7 @@ app.layout = html.Div(children=[
         id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
-    html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
+    html.Div(id='update_state', style={'whiteSpace': 'pre-line'})
     ])
 
 
@@ -35,16 +35,16 @@ app.layout = html.Div(children=[
 #     return "{}".format(output)    
 
 @app.callback(
-    Output('update_output', 'children'),
-    [Input('submit-button-state', 'n_clicks'),
-    State('input-2-state', 'value'),
-    State('input-1-state', 'value')]
-)
-def update_output(clicks,value2,value1):
-    if clicks > 0:
-        s=value1+value2
-        return 'You have entered: \n{}'.format(s)
-
+    Output('update_state', 'children'),
+    [Input('submit-button-state', 'n_clicks')],
+    [State('input-2-state', 'value'),
+    State('input-1-state', 'value')])
+def update_output(n_clicks, input1, input2):
+    return u'''
+        The Button has been pressed {} times,
+        Input 1 is "{}",
+        and Input 2 is "{}"
+    '''.format(n_clicks, input1, input2)
 
 
 
