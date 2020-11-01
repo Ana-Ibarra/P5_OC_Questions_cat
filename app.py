@@ -34,11 +34,11 @@ app.layout = html.Div(children=[
                State('input-2-state', 'value')])
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
-#         from functions2 import body_clean
-#         from functions2 import tags_prediction
-#         body = body_clean(input1, input2)
+        from functions2 import body_clean
+        from functions2 import tags_prediction
+        body = body_clean(input1, input2)
 #         output = tags_prediction(body)
-        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,input2)
+        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,body)
 
 
 if __name__ == '__main__':
