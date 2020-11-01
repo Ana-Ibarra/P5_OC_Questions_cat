@@ -25,16 +25,16 @@ app.layout = html.Div(children=[
     html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
     ])
 
-@app.callback([Output('update_output', 'children')],
-              [Input('submit-button-state', 'n_clicks'),
-              State('input-1-state', 'value'),
-               State('input-2-state', 'value')])
+@app.callback(Output('update_output', 'children'),
+              [Input('submit-button-state', 'n_clicks')])#,
+#               State('input-1-state', 'value'),
+#                State('input-2-state', 'value')])
 
-def update_output(n_clicks):
+def show_tags(n_clicks):
     if n_clicks is None:
         raise PreventUpdate
     else:
-        return "Elephants are the only animal that can't jump"
+        return "Tags go here"
 
 #     from functions2 import body_clean
 #     from functions2 import tags_prediction
