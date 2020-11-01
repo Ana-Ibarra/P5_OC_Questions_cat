@@ -29,12 +29,12 @@ app.layout = html.Div(children=[
 @app.callback(
     Output('update_output', 'children'),
     [Input('submit-button-state', 'n_clicks')],
-    [State('input-2-state', 'value'),
-    State('input-1-state', 'value')]
+    [State('input-2-state', 'value')],
+    [State('input-1-state', 'value')]
 )
 def update_output(n_clicks):
     if n_clicks > 0:
-        s='input-2-state'+'input-1-state'
+        s=['input-2-state','input-1-state']
         return 'You have entered: \n{}'.format(s)
 
 
