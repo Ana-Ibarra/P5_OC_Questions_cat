@@ -4,6 +4,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
+
 from functions2 import body_clean
 from functions2 import tags_prediction
 
@@ -30,20 +31,14 @@ app.layout = html.Div(children=[
     ])
 
 
-def get_tags(value1,value2)
-
-    body = body_clean(value1, value2)
-    output = tags_prediction(body)
-    return output  
-
-
 @app.callback(Output('Tags_output', 'children'),
               [Input('submit-button-state', 'n_clicks')],
               [State('input-1-state', 'value'),
                State('input-2-state', 'value')])
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
-        ouput=get_tags(input1,input2)
+        body = body_clean(value1, value2)
+        output = tags_prediction(body)
         return 'Your tags are : \n{}'.format(output)
 
 
