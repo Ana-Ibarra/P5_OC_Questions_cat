@@ -15,26 +15,26 @@ app.layout = html.Div(
     html.Div(children='''
         P5: A web application framework, from Openclassroom .
     '''),
-    dcc.Input(
-        id='input-1-state', type='text', value='Title', 
+    [dcc.Input(
+        id='input-1-state', type='text', value1='Title', 
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
     dcc.Textarea(
-        id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
+        id='input-2-state', value2='Text', style={'width': '100%', 'height': 300}),
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
-    )
+    ])
 
-# @app.callback(Output('update_output', 'children'),
-#               [Input('submit-button-state', 'n_clicks')])#,
-# #               State('input-1-state', 'value'),
-# #                State('input-2-state', 'value')])
+@app.callback(
+    Output('update_output', 'children'),
+    [Input('submit-button-state', 'n_clicks')],
+    [State('input-2-state', 'value')],
+    [State('input-1-state', 'value')]
+)
+def update_output(n_clicks, value1,value2):
+    if n_clicks > 0:
+        return 'You have entered: \n{}'.format(value1+value2)
 
-# def show_tags(n_clicks):
-#     if n_clicks is None:
-#         raise PreventUpdate
-#     else:
-#         return "Tags go here"
 
 #     from functions2 import body_clean
 #     from functions2 import tags_prediction
