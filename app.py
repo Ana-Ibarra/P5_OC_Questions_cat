@@ -13,7 +13,7 @@ colors = {
     'background': '#111111',
     'text': '#7FDBFF'}
 
-server = app.server
+# server = app.server
 
 app.layout = html.Div(children=[
     html.H1(children='Questions Classification Stackoverflow'),
