@@ -10,7 +10,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-app.layout = html.Div(children=[
+app.layout = html.Div(
     html.H1(children='Questions Classification Stackoverflow'),
     html.Div(children='''
         P5: A web application framework, from Openclassroom .
@@ -23,18 +23,18 @@ app.layout = html.Div(children=[
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
-    ])
+    )
 
-@app.callback(Output('update_output', 'children'),
-              [Input('submit-button-state', 'n_clicks')])#,
-#               State('input-1-state', 'value'),
-#                State('input-2-state', 'value')])
+# @app.callback(Output('update_output', 'children'),
+#               [Input('submit-button-state', 'n_clicks')])#,
+# #               State('input-1-state', 'value'),
+# #                State('input-2-state', 'value')])
 
-def show_tags(n_clicks):
-    if n_clicks is None:
-        raise PreventUpdate
-    else:
-        return "Tags go here"
+# def show_tags(n_clicks):
+#     if n_clicks is None:
+#         raise PreventUpdate
+#     else:
+#         return "Tags go here"
 
 #     from functions2 import body_clean
 #     from functions2 import tags_prediction
