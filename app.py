@@ -10,12 +10,12 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-app.layout = html.Div(
+app.layout = html.Div([
     html.H1(children='Questions Classification Stackoverflow'),
     html.Div(children='''
         P5: A web application framework, from Openclassroom .
     '''),
-    [dcc.Input(
+    dcc.Input(
         id='input-1-state', type='text', value1='Title', 
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
     dcc.Textarea(
@@ -25,15 +25,15 @@ app.layout = html.Div(
     html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
     ])
 
-@app.callback(
-    Output('update_output', 'children'),
-    [Input('submit-button-state', 'n_clicks')],
-    [State('input-2-state', 'value')],
-    [State('input-1-state', 'value')]
-)
-def update_output(n_clicks, value1,value2):
-    if n_clicks > 0:
-        return 'You have entered: \n{}'.format(value1+value2)
+# @app.callback(
+#     Output('update_output', 'children'),
+#     [Input('submit-button-state', 'n_clicks')],
+#     [State('input-2-state', 'value')],
+#     [State('input-1-state', 'value')]
+# )
+# def update_output(n_clicks, value1,value2):
+#     if n_clicks > 0:
+#         return 'You have entered: \n{}'.format(value1+value2)
 
 
 #     from functions2 import body_clean
