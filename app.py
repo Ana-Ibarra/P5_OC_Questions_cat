@@ -5,9 +5,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-from functions2 import body_clean
-from functions2 import tags_prediction
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -37,6 +34,8 @@ app.layout = html.Div(children=[
                State('input-2-state', 'value')])
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
+        from functions2 import body_clean
+        from functions2 import tags_prediction
         body = body_clean(value1, value2)
         output = tags_prediction(body)
         return 'Your tags are : \n{}'.format(output)
