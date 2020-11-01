@@ -16,12 +16,12 @@ app.layout = html.Div(children=[
     html.Div(children='''
         P5: A web application framework, from Openclassroom .
     '''),
-#     dcc.Input(id='input-1-state',
-#               type='text', 
-#               value='Titre', 
-#               style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
-    dcc.Textarea(
-        id='input-1-state', value='Title', style={'width': '100%', 'height': 50}), 
+    dcc.Input(id='input-1-state',
+              type='text', 
+              value='Titre', 
+              style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
+#     dcc.Textarea(
+#         id='input-1-state', value='Title', style={'width': '100%', 'height': 50}), 
     dcc.Textarea(
         id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
    
