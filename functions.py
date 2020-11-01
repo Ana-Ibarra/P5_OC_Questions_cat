@@ -9,6 +9,17 @@ from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 from bs4 import BeautifulSoup
 
+# Create a set with stopwords from ntkl and personalized dict
+stops = set(stopwords.words("english"))   
+custom_words = ['use','would','x','want','way','like','work','get','one',
+                'new','code','need','someth','test','good','make','always',
+                'problem','take','best','anyone','given','look','also',
+                'well','give','user','value','without','know','abcde',
+                'any','does','exampl','try','ani','do','doe','e','v','j'
+                'file','will', 'hi', 'hello','question']   
+stop_words = stops.union(set(custom_words))
+
+
 def raw2string(raw2review):
     # Function to convert a raw to a string of words
     raw2review = BeautifulSoup(raw2review).get_text()       
@@ -26,18 +37,7 @@ def body_clean(title, text):
 
     body = title + text
     body = body.str.replace('\+\+','plusplus',regex=True)
-    body = body.str.replace('#','sharp',regex=True)
-    
-    # Create a set with stopwords from ntkl and personalized dict
-    stops = set(stopwords.words("english"))   
-    custom_words = ['use','would','x','want','way','like','work','get','one',
-                'new','code','need','someth','test','good','make','always',
-                'problem','take','best','anyone','given','look','also',
-                'well','give','user','value','without','know','abcde',
-                'any','does','exampl','try','ani','do','doe','e','v','j'
-                'file','will', 'hi', 'hello','question']   
-    stop_words = stops.union(set(custom_words))
-    
+    body = body.str.replace('#','sharp',regex=True)     
     body = raw2string(body)
     return body
 
