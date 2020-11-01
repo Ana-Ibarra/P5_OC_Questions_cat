@@ -11,41 +11,65 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 
-app.layout = html.Div(children=[
-    html.H1(children='Questions Classification Stackoverflow'),
-    html.Div(children='''
-        P5: A web application framework, from Openclassroom .
-    '''),
-    dcc.Input(
-        id='input-1-state', type='text', value='Title', 
-        style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
-   dcc.Textarea(
-        id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
+# app.layout = html.Div(children=[
+#     html.H1(children='Questions Classification Stackoverflow'),
+#     html.Div(children='''
+#         P5: A web application framework, from Openclassroom .
+#     '''),
+#     dcc.Input(
+#         id='input-1-state', type='text', value='Title', 
+#         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
+#    dcc.Textarea(
+#         id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
    
+#     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
+#     html.Div(id='update_state', style={'whiteSpace': 'pre-line'})
+#     ])
+
+
+# # def get_tags(value1,value2)
+# #     from functions2 import body_clean
+# #     from functions2 import tags_prediction
+# #     body = body_clean('input-1-state', 'input-2-state')
+# #     output = tags_prediction(body)
+# #     return "{}".format(output)    
+
+# @app.callback(
+#     Output('update_state', 'children'),
+#     [Input('submit-button-state', 'n_clicks')],
+#     [State('input-2-state', 'value'),
+#     State('input-1-state', 'value')])
+# def update_output(n_clicks, input1, input2):
+#     return u'''
+#         The Button has been pressed {} times,
+#         Input 1 is "{}",
+#         and Input 2 is "{}"
+#     '''.format(n_clicks, input1, input2)
+
+
+
+# if __name__ == '__main__':
+#     app.run_server(debug=True)
+    
+    
+app.layout = html.Div([
+    dcc.Input(id='input-1-state', type='text', value='Montréal'),
+    dcc.Input(id='input-2-state', type='text', value='Canada'),
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
-    html.Div(id='update_state', style={'whiteSpace': 'pre-line'})
-    ])
+    html.Div(id='output-state')
+])
 
 
-# def get_tags(value1,value2)
-#     from functions2 import body_clean
-#     from functions2 import tags_prediction
-#     body = body_clean('input-1-state', 'input-2-state')
-#     output = tags_prediction(body)
-#     return "{}".format(output)    
-
-@app.callback(
-    Output('update_state', 'children'),
-    [Input('submit-button-state', 'n_clicks')],
-    [State('input-2-state', 'value'),
-    State('input-1-state', 'value')])
+@app.callback(Output('output-state', 'children'),
+              [Input('submit-button-state', 'n_clicks')],
+              [State('input-1-state', 'value'),
+               State('input-2-state', 'value')])
 def update_output(n_clicks, input1, input2):
     return u'''
         The Button has been pressed {} times,
         Input 1 is "{}",
         and Input 2 is "{}"
     '''.format(n_clicks, input1, input2)
-
 
 
 if __name__ == '__main__':
