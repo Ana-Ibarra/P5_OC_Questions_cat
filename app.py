@@ -34,10 +34,10 @@ app.layout = html.Div(children=[
               [State('input-1-state', 'value'),
                State('input-2-state', 'value')])
 
-def update_output('input-1-state','input-2-state'):
-    body = body_clean('input-1-state', 'input-2-state')
-    output = tags_prediction(body)
-    return output
+# def update_output('input-1-state','input-2-state'):
+#     body = body_clean('input-1-state', 'input-2-state')
+#     output = tags_prediction(body)
+#     return output
 
 if __name__ == '__main__':
     app.run_server(debug=True)
