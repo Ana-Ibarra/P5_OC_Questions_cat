@@ -17,10 +17,10 @@ app.layout = html.Div(children=[
         P5: A web application framework, from Openclassroom .
     '''),
     dcc.Input(
-        id='input-1-state', type='text', value1='Title', 
+        id='input-1-state', type='text', value='Title', 
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
    dcc.Textarea(
-        id='input-2-state', value2='Text', style={'width': '100%', 'height': 300}),
+        id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
