@@ -25,17 +25,22 @@ app.layout = html.Div(children=[
     html.Div(id='update_output', style={'whiteSpace': 'pre-line'})
     ])
 
-@app.callback(Output('update_output', 'children'),
+@app.callback([Output('update_output', 'children')],
               [Input('submit-button-state', 'n_clicks'),
               State('input-1-state', 'value'),
                State('input-2-state', 'value')])
 
-def update_output('input-1-state','input-2-state'):
-    from functions2 import body_clean
-    from functions2 import tags_prediction
-    body = body_clean('input-1-state', 'input-2-state')
-    output = tags_prediction(body)
-    return "{}".format(output)
+def update_output(n_clicks):
+    if n_clicks is None:
+        raise PreventUpdate
+    else:
+        return "Elephants are the only animal that can't jump"
+
+#     from functions2 import body_clean
+#     from functions2 import tags_prediction
+#     body = body_clean('input-1-state', 'input-2-state')
+#     output = tags_prediction(body)
+#     return "{}".format(output)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
