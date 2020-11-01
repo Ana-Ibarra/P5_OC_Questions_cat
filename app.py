@@ -20,8 +20,8 @@ app.layout = html.Div(children=[
               type='text', 
               value='Titre', 
               style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
-#     dcc.Textarea(
-#         id='input-1-state', value='Title', style={'width': '100%', 'height': 50}), 
+    dcc.Textarea(
+        id='input-1-state', value='Title', style={'width': '100%', 'height': 50}), 
     dcc.Textarea(
         id='input-2-state', value='Text', style={'width': '100%', 'height': 300}),
    
@@ -29,10 +29,10 @@ app.layout = html.Div(children=[
     html.Div(id='output-state', style={'whiteSpace': 'pre-line'})
 ])
 
-@app.callback(Output('output-state', 'children'),
-              [Input('submit-button-state', 'n_clicks')],
-              [State('input-1-state', 'value'),
-               State('input-2-state', 'value')])
+# @app.callback(Output('output-state', 'children'),
+#               [Input('submit-button-state', 'n_clicks')],
+#               [State('input-1-state', 'value'),
+#                State('input-2-state', 'value')])
 
 # def update_output('input-1-state','input-2-state'):
 #     body = body_clean('input-1-state', 'input-2-state')
