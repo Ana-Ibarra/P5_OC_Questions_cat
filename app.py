@@ -9,6 +9,10 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+colors = {
+    'background': '#111111',
+    'text': '#7FDBFF'}
+
 server = app.server
 
 app.layout = html.Div(children=[
@@ -17,7 +21,7 @@ app.layout = html.Div(children=[
         P5: A web application framework, from Openclassroom .
     '''),
     dcc.Input(
-        id='input-1-state', type='text', value='Titre', 
+        id='input-1-state', type='text', value='Title', 
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10}), 
 #     dcc.Textarea(
 #         id='input-1-state', value='Title', style={'width': '100%', 'height': 50}), 
@@ -26,7 +30,7 @@ app.layout = html.Div(children=[
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
     html.Div(id='output-state', style={'whiteSpace': 'pre-line'})
-])
+    ])
 
 # @app.callback(Output('output-state', 'children'),
 #               [Input('submit-button-state', 'n_clicks')],
