@@ -31,16 +31,16 @@ app.layout = html.Div(children=[
 ###
 ###**********************************************************#####
 
-import pandas as pd  
-import numpy as np
+# import pandas as pd  
+# import numpy as np
 
-# import joblib
-import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem.snowball import SnowballStemmer
-from nltk.stem import WordNetLemmatizer
-from bs4 import BeautifulSoup
+# # import joblib
+# import re
+# import nltk
+# from nltk.corpus import stopwords
+# from nltk.stem.snowball import SnowballStemmer
+# from nltk.stem import WordNetLemmatizer
+# from bs4 import BeautifulSoup
 
 # # Create a set with stopwords from ntkl and personalized dict
 # stops = set(stopwords.words("english"))   
