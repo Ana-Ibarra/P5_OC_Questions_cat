@@ -43,13 +43,13 @@ from nltk.stem import WordNetLemmatizer
 # from bs4 import BeautifulSoup
 
 # Create a set with stopwords from ntkl and personalized dict
-stops = set(stopwords.words("english"))   
-# custom_words = ['use','would','x','want','way','like','work','get','one',
-#                 'new','code','need','someth','test','good','make','always',
-#                 'problem','take','best','anyone','given','look','also',
-#                 'well','give','user','value','without','know','abcde',
-#                 'any','does','exampl','try','ani','do','doe','e','v','j'
-#                 'file','will', 'hi', 'hello','question']   
+# stops = set(stopwords.words("english"))  AQUI ESTA EL ERROR.... pero ya no se pa donde titrar 
+custom_words = ['use','would','x','want','way','like','work','get','one',
+                'new','code','need','someth','test','good','make','always',
+                'problem','take','best','anyone','given','look','also',
+                'well','give','user','value','without','know','abcde',
+                'any','does','exampl','try','ani','do','doe','e','v','j'
+                'file','will', 'hi', 'hello','question']   
 # stop_words = stops.union(set(custom_words))
 
 
