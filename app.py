@@ -68,19 +68,13 @@ def body_clean(title, text):
     words = [w for w in words if not w in stop_words]
     return ( " ".join(words))
 
-
-tfidf = joblib.load('tfidf_model.sav') # TF-IDF Vectorization
-mlb = joblib.load('multilabelling_model.sav') # Multilabelled tags
-svc_model = joblib.load('finalized_model.sav') # Linear SVC model
-
 def tags_prediction(body):
     X = pd.Series(body)
-    
+    tfidf = joblib.load('tfidf_model.sav') # TF-IDF Vectorization
     X = tfidf.transform(X)
-   
-    
-    
+    svc_model = joblib.load('finalized_model.sav') # Linear SVC model
     pred_svc = svc_model.predict(X)
+    mlb = joblib.load('multilabelling_model.sav') # Multilabelled tags
     return mlb.inverse_transform(pred_svc) # Visualization of tags
 
 ###**********************************************************#####
