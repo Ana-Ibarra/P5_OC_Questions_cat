@@ -1,8 +1,8 @@
+##**********************************************************#####
 import pandas as pd  
 import numpy as np
 
-import joblib
-from joblib import load
+from joblib import *
 import re
 import nltk
 from nltk.corpus import stopwords
@@ -18,7 +18,6 @@ custom_words = ['use','would','x','want','way','like','work','get','one',
                 'any','does','exampl','try','ani','do','doe','e','v','j'
                 'file','will', 'hi', 'hello','question']   
 stop_words = stops.union(set(custom_words))
-
 
 def body_clean(title, text):
     body = [title + text]
@@ -37,9 +36,10 @@ def body_clean(title, text):
 
 def tags_prediction(body):
     X = pd.Series(body)
-    tfidf = load('tfidf_model.joblib') # TF-IDF Vectorization
+    tfidf = load('./tfidf_model.joblib') # TF-IDF Vectorization
     X = tfidf.transform(X)
-    svc_model = load('finalized_model.joblib') # Linear SVC model
+    svc_model = load('./finalized_model.joblib') # Linear SVC model
     pred_svc = svc_model.predict(X)
-    mlb = load('multilabelling_model.joblib') # Multilabelled tags
+    mlb = load('./multilabelling_model.joblib') # Multilabelled tags
     return mlb.inverse_transform(pred_svc) # Visualization of tags
+###**********************************************************#####
