@@ -94,7 +94,7 @@ def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
         body = body_clean(input1, input2)
         output = tags_prediction(body)
-        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,outputs)
+        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,output)
 
 
 if __name__ == '__main__':
