@@ -37,9 +37,9 @@ app.layout = html.Div(children=[
 # # import joblib
 # import re
 # import nltk
-# from nltk.corpus import stopwords
-# from nltk.stem.snowball import SnowballStemmer
-# from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+from nltk.stem.snowball import SnowballStemmer
+from nltk.stem import WordNetLemmatizer
 # from bs4 import BeautifulSoup
 
 # # Create a set with stopwords from ntkl and personalized dict
