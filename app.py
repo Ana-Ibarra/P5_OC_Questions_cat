@@ -93,7 +93,7 @@ def tags_prediction(body):
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
         body = body_clean(input1, input2)
-        output = tags_prediction(body)
+#         output = tags_prediction(body) ### esta llinea ya no la hace...hay que verificar la funcion 
         return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,body)
 
 
