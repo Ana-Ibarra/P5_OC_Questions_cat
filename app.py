@@ -43,7 +43,7 @@ from nltk.stem import WordNetLemmatizer
 # from bs4 import BeautifulSoup
 
 # Create a set with stopwords from ntkl and personalized dict
-stops = set(stopwords.words("english"))  #AQUI ESTA EL ERROR.... pero ya no se pa donde titrar 
+stops = set(stopwords.words("english"))  
 custom_words = ['use','would','x','want','way','like','work','get','one',
                 'new','code','need','someth','test','good','make','always',
                 'problem','take','best','anyone','given','look','also',
@@ -68,18 +68,18 @@ def body_clean(title, text):
     words = [w for w in words if not w in stop_words]
     return ( " ".join(words))
 
-# def tags_prediction(body):
-#     X = pd.Series(body)
-#     # TF-IDF Vectorization
-#     tfidf = joblib.load('tfidf_model.sav')
-#     X = tfidf.transform(X)
-#     # Multilabelled tags
-#     mlb = joblib.load('multilabelling_model.sav')
-#     # Linear SVC model
-#     svc_model = joblib.load('finalized_model.sav')
-#     pred_svc = svc_model.predict(X)
-#     # Visualization of tags
-#     return mlb.inverse_transform(pred_svc)
+def tags_prediction(body):
+    X = pd.Series(body)
+    # TF-IDF Vectorization
+    tfidf = joblib.load('tfidf_model.sav')
+    X = tfidf.transform(X)
+    # Multilabelled tags
+    mlb = joblib.load('multilabelling_model.sav')
+    # Linear SVC model
+    svc_model = joblib.load('finalized_model.sav')
+    pred_svc = svc_model.predict(X)
+    # Visualization of tags
+    return mlb.inverse_transform(pred_svc)
 
 ###**********************************************************#####
 ###
@@ -93,8 +93,8 @@ def body_clean(title, text):
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
         body = body_clean(input1, input2)
-#         output = tags_prediction(body)
-        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,body)
+        output = tags_prediction(body)
+        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,outputs)
 
 
 if __name__ == '__main__':
