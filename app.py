@@ -3,7 +3,6 @@ import os
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_bootstrap_components as dbc
 
 from dash.dependencies import Input, Output, State
 from functions import *
@@ -49,4 +48,4 @@ def update_output(n_clicks, input1, input2):
         
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug = True)
