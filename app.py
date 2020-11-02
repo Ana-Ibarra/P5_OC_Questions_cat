@@ -65,15 +65,15 @@ def body_clean(title, text):
     words = [w for w in words if not w in stop_words]
     return ( " ".join(words))
 
-# def tags_prediction(body):
-#     X = pd.Series(body)
-#     tfidf = load('tfidf_model.joblib') # TF-IDF Vectorization
-#     X = tfidf.transform(X)
-#     svc_model = load('finalized_model.joblib') # Linear SVC model
-#     pred_svc = svc_model.predict(X)
-#     mlb = load('multilabelling_model.joblib') # Multilabelled tags
-#     return mlb.inverse_transform(pred_svc) # Visualization of tags
-# ###**********************************************************#####
+def tags_prediction(body):
+    X = pd.Series(body)
+    tfidf = load('/tfidf_model.joblib') # TF-IDF Vectorization
+    X = tfidf.transform(X)
+    svc_model = load('/finalized_model.joblib') # Linear SVC model
+    pred_svc = svc_model.predict(X)
+    mlb = load('/multilabelling_model.joblib') # Multilabelled tags
+    return mlb.inverse_transform(pred_svc) # Visualization of tags
+###**********************************************************#####
 
 @app.callback(Output('Tags_output', 'children'),
               [Input('submit-button-state', 'n_clicks')],
@@ -82,7 +82,7 @@ def body_clean(title, text):
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
         body = body_clean(input1, input2)
-#         output = tags_prediction(body) ### esta llinea ya no la hace...hay que verificar la funcion tags_prediction
+        output = tags_prediction(body) ### esta llinea ya no la hace...hay que verificar la funcion tags_prediction
         return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,body)
 
 if __name__ == '__main__':
