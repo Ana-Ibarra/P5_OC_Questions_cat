@@ -42,15 +42,15 @@ from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 # from bs4 import BeautifulSoup
 
-# # Create a set with stopwords from ntkl and personalized dict
-# stops = set(stopwords.words("english"))   
-# custom_words = ['use','would','x','want','way','like','work','get','one',
-#                 'new','code','need','someth','test','good','make','always',
-#                 'problem','take','best','anyone','given','look','also',
-#                 'well','give','user','value','without','know','abcde',
-#                 'any','does','exampl','try','ani','do','doe','e','v','j'
-#                 'file','will', 'hi', 'hello','question']   
-# stop_words = stops.union(set(custom_words))
+# Create a set with stopwords from ntkl and personalized dict
+stops = set(stopwords.words("english"))   
+custom_words = ['use','would','x','want','way','like','work','get','one',
+                'new','code','need','someth','test','good','make','always',
+                'problem','take','best','anyone','given','look','also',
+                'well','give','user','value','without','know','abcde',
+                'any','does','exampl','try','ani','do','doe','e','v','j'
+                'file','will', 'hi', 'hello','question']   
+stop_words = stops.union(set(custom_words))
 
 
 # def body_clean(title, text):
