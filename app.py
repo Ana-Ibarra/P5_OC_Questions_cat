@@ -4,14 +4,15 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
+import functions2
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
+app.config.suppress_callback_exceptions = True
 server = app.server
 
-
+style = {'maxWidth': '960px', 'margin': 'auto'}
 app.layout = html.Div(children=[
     html.H1(children='Questions Classification Stackoverflow'),
     html.Div(children='''
@@ -28,63 +29,8 @@ app.layout = html.Div(children=[
     ])
 
 ###**********************************************************#####
-###
-###**********************************************************#####
-
-import pandas as pd  
-import numpy as np
-
-import joblib
-from joblib import load
-import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem.snowball import SnowballStemmer
-from nltk.stem import WordNetLemmatizer
-# from bs4 import BeautifulSoup
-
-# Create a set with stopwords from ntkl and personalized dict
-stops = set(stopwords.words("english"))  
-custom_words = ['use','would','x','want','way','like','work','get','one',
-                'new','code','need','someth','test','good','make','always',
-                'problem','take','best','anyone','given','look','also',
-                'well','give','user','value','without','know','abcde',
-                'any','does','exampl','try','ani','do','doe','e','v','j'
-                'file','will', 'hi', 'hello','question']   
-stop_words = stops.union(set(custom_words))
-
-
-def body_clean(title, text):
-    body = [title + text]
-    body = ''.join(body)
-    body = re.sub('\+\+','plusplus', body) 
-    body = re.sub('#','sharp', body)
-    letters_only = re.sub("[^a-zA-Z]", " ", body)  
-    words = letters_only.lower().split()         
-    words = [w for w in words if not w in stop_words] 
-    wnl = WordNetLemmatizer()
-    words = [wnl.lemmatize(w) for w in words]
-    stemmer = SnowballStemmer("english")
-    words = [stemmer.stem(word) for word in words]      
-    words = [w for w in words if not w in stop_words]
-    return ( " ".join(words))
-
-def tags_prediction(body):
-    X = pd.Series(body)
-    tfidf = load('tfidf_model.joblib')
-#     tfidf = joblib.load('tfidf_model.sav') # TF-IDF Vectorization
-    X = tfidf.transform(X)
-    svc_model = load('finalized_model.joblib')
-#     svc_model = joblib.load('finalized_model.sav') # Linear SVC model
-    pred_svc = svc_model.predict(X)
-    mlb = load('multilabelling_model.joblib')
-#     mlb = joblib.load('multilabelling_model.sav') # Multilabelled tags
-    return mlb.inverse_transform(pred_svc) # Visualization of tags
 
 ###**********************************************************#####
-###
-###**********************************************************#####
-
 
 @app.callback(Output('Tags_output', 'children'),
               [Input('submit-button-state', 'n_clicks')],
@@ -95,7 +41,6 @@ def update_output(n_clicks, input1, input2):
         body = body_clean(input1, input2)
         output = tags_prediction(body) ### esta llinea ya no la hace...hay que verificar la funcion tags_prediction
         return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,output)
-
 
 if __name__ == '__main__':
     app.run_server(debug=True)

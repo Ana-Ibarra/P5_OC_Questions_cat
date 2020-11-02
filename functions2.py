@@ -2,15 +2,15 @@ import pandas as pd
 import numpy as np
 
 import joblib
+from joblib import load
 import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
-from bs4 import BeautifulSoup
 
 # Create a set with stopwords from ntkl and personalized dict
-stops = set(stopwords.words("english"))   
+stops = set(stopwords.words("english"))  
 custom_words = ['use','would','x','want','way','like','work','get','one',
                 'new','code','need','someth','test','good','make','always',
                 'problem','take','best','anyone','given','look','also',
@@ -37,13 +37,9 @@ def body_clean(title, text):
 
 def tags_prediction(body):
     X = pd.Series(body)
-    # TF-IDF Vectorization
-    tfidf = joblib.load('tfidf_model.sav')
+    tfidf = load('tfidf_model.joblib') # TF-IDF Vectorization
     X = tfidf.transform(X)
-    # Multilabelled tags
-    mlb = joblib.load('multilabelling_model.sav')
-    # Linear SVC model
-    svc_model = joblib.load('finalized_model.sav')
+    svc_model = load('finalized_model.joblib') # Linear SVC model
     pred_svc = svc_model.predict(X)
-    # Visualization of tags
-    return mlb.inverse_transform(pred_svc)
+    mlb = load('multilabelling_model.joblib') # Multilabelled tags
+    return mlb.inverse_transform(pred_svc) # Visualization of tags
