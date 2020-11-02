@@ -50,23 +50,23 @@ custom_words = ['use','would','x','want','way','like','work','get','one',
                 'well','give','user','value','without','know','abcde',
                 'any','does','exampl','try','ani','do','doe','e','v','j'
                 'file','will', 'hi', 'hello','question']   
-# stop_words = stops.union(set(custom_words))
+stop_words = stops.union(set(custom_words))
 
 
-# def body_clean(title, text):
-#     body = [title + text]
-#     body = ''.join(body)
-#     body = re.sub('\+\+','plusplus', body) 
-#     body = re.sub('#','sharp', body)
-#     letters_only = re.sub("[^a-zA-Z]", " ", body)  
-#     words = letters_only.lower().split()         
-#     words = [w for w in words if not w in stop_words] 
-#     wnl = WordNetLemmatizer()
-#     words = [wnl.lemmatize(w) for w in words]
-#     stemmer = SnowballStemmer("english")
-#     words = [stemmer.stem(word) for word in words]      
-#     words = [w for w in words if not w in stop_words]
-#     return ( " ".join(words))
+def body_clean(title, text):
+    body = [title + text]
+    body = ''.join(body)
+    body = re.sub('\+\+','plusplus', body) 
+    body = re.sub('#','sharp', body)
+    letters_only = re.sub("[^a-zA-Z]", " ", body)  
+    words = letters_only.lower().split()         
+    words = [w for w in words if not w in stop_words] 
+    wnl = WordNetLemmatizer()
+    words = [wnl.lemmatize(w) for w in words]
+    stemmer = SnowballStemmer("english")
+    words = [stemmer.stem(word) for word in words]      
+    words = [w for w in words if not w in stop_words]
+    return ( " ".join(words))
 
 # def tags_prediction(body):
 #     X = pd.Series(body)
@@ -92,9 +92,9 @@ custom_words = ['use','would','x','want','way','like','work','get','one',
                State('input-2-state', 'value')])
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
-#         body = body_clean(input1, input2)
+        body = body_clean(input1, input2)
 #         output = tags_prediction(body)
-        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,input1)
+        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,body)
 
 
 if __name__ == '__main__':
