@@ -36,7 +36,7 @@ app.layout = html.Div(children=[
 
 # # import joblib
 # import re
-# import nltk
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
