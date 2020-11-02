@@ -4,7 +4,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-import functions2
+from functions2 import stop_words, body_clean, tags_prediction
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
