@@ -43,7 +43,7 @@ from nltk.stem import WordNetLemmatizer
 # from bs4 import BeautifulSoup
 
 # Create a set with stopwords from ntkl and personalized dict
-# stops = set(stopwords.words("english"))   
+stops = set(stopwords.words("english"))   
 # custom_words = ['use','would','x','want','way','like','work','get','one',
 #                 'new','code','need','someth','test','good','make','always',
 #                 'problem','take','best','anyone','given','look','also',
