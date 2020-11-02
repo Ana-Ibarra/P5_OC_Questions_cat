@@ -70,9 +70,9 @@ def body_clean(title, text):
 
 def tags_prediction(body):
     X = pd.Series(body)
+    tfidf = joblib.load('tfidf_model.sav') # TF-IDF Vectorization
+    X = tfidf.transform(X)
     return X
-#     tfidf = joblib.load('tfidf_model.sav') # TF-IDF Vectorization
-#     X = tfidf.transform(X)
 #     mlb = joblib.load('multilabelling_model.sav') # Multilabelled tags
 #     svc_model = joblib.load('finalized_model.sav') # Linear SVC model
 #     pred_svc = svc_model.predict(X)
