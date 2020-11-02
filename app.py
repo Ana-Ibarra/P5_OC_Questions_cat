@@ -70,16 +70,13 @@ def body_clean(title, text):
 
 def tags_prediction(body):
     X = pd.Series(body)
-    # TF-IDF Vectorization
-    tfidf = joblib.load('tfidf_model.sav')
-    X = tfidf.transform(X)
-    # Multilabelled tags
-    mlb = joblib.load('multilabelling_model.sav')
-    # Linear SVC model
-    svc_model = joblib.load('finalized_model.sav')
-    pred_svc = svc_model.predict(X)
-    # Visualization of tags
-    return mlb.inverse_transform(pred_svc)
+    return X
+#     tfidf = joblib.load('tfidf_model.sav') # TF-IDF Vectorization
+#     X = tfidf.transform(X)
+#     mlb = joblib.load('multilabelling_model.sav') # Multilabelled tags
+#     svc_model = joblib.load('finalized_model.sav') # Linear SVC model
+#     pred_svc = svc_model.predict(X)
+#     return mlb.inverse_transform(pred_svc) # Visualization of tags
 
 ###**********************************************************#####
 ###
@@ -93,8 +90,8 @@ def tags_prediction(body):
 def update_output(n_clicks, input1, input2):
     if n_clicks > 0:
         body = body_clean(input1, input2)
-#         output = tags_prediction(body) ### esta llinea ya no la hace...hay que verificar la funcion 
-        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,body)
+        output = tags_prediction(body) ### esta llinea ya no la hace...hay que verificar la funcion tags_prediction
+        return u'''N click= {}, Your tags are : \n{}'''.format(n_clicks,output)
 
 
 if __name__ == '__main__':
