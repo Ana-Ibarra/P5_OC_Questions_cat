@@ -35,6 +35,7 @@ import pandas as pd
 import numpy as np
 
 import joblib
+from joblib import load
 import re
 import nltk
 from nltk.corpus import stopwords
