@@ -23,7 +23,8 @@ ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi 
 Jinja2==2.11.2
-jsonschema 
+jsonschema
+joblib 
 numpy 
 packaging==20.4
 pandas 
@@ -39,3 +40,5 @@ pyparsing==2.4.7
 pyrsistent
 python-dateutil==2.8.1
 pytz==2020.1
+re
+nltk
