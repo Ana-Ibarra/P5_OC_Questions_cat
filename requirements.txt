@@ -41,3 +41,4 @@ pyrsistent
 python-dateutil==2.8.1
 pytz==2020.1
 nltk===3.4.5
+sklearn==0.0
