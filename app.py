@@ -26,11 +26,12 @@ app.layout = html.Div(children=[
         A web application framework, from Openclassroom.
     '''),
     dcc.Input(
-        id='input-1-state', type='text', placeholder='Title of the question', value= 'Hi my name is Ana!',
+        id='input-1-state', type='text', placeholder='Title of the question', 
+        value="How to log SQL statements in Spring Boot?"
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10,'backgroundColor': colors['background'],'color': colors['text']}), 
     dcc.Textarea(
         id='input-2-state', placeholder='Here write the question',
-       value="I want to know if I'll have a new screen next month but I use python and C++ to ask my existential java question",
+       value="I have the following properties. I can see statements in sping...",
        style={'width': '100%', 'height': 200,'backgroundColor': colors['background'],'color': colors['text']}),
    
     html.Button(id='submit-button-state', n_clicks=0, children='Submit'),
