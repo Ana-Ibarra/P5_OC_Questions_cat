@@ -27,7 +27,7 @@ app.layout = html.Div(children=[
     '''),
     dcc.Input(
         id='input-1-state', type='text', placeholder='Title of the question', 
-        value="How to log SQL statements in Spring Boot?"
+        value="How to log sql statements in Spring Boot?",
         style={'width': '80%', 'marginBottom': 10, 'marginTop': 10,'backgroundColor': colors['background'],'color': colors['text']}), 
     dcc.Textarea(
         id='input-2-state', placeholder='Here write the question',
